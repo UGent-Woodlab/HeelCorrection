@@ -16,6 +16,7 @@ import numba
 import os
 import re
 import math
+import shutil
 
 numba.config.THREADING_LAYER = 'safe'
 
@@ -465,6 +466,82 @@ def CorrectDatasetExperimentalGPU(datafolder, scanprefix, scan_io_file, scan_dar
   elapsed_time = time.time() - start
   elapsed_minutes = elapsed_time / 60
   print('Time elapsed: {:.2f} minutes'.format(elapsed_minutes))
+
+
+
+
+
+# does previus function but copies folder to local drive: if your data is on a slow server.
+def CorrectDatasetExperimentalGPUcopyToLocalDrive(datafolder, scanprefix, scan_io_file, scan_dark_file, savefolder,
+                                                  wedge_poly_file, wedge_IO_file, wedge_dark_file, a, b, SOD, SDD,
+                                                  detector_height, detector_width, LUT_height, pixelsize,
+                                                  scatter_space_LUT, scatter_space_projections, local_temp_dir,
+                                                  height_pitch=0.0):
+    """
+    Copies the dataset to a local directory, corrects it, and then copies it back.
+    
+    :param local_temp_dir: Path to the local directory where the dataset will be temporarily stored
+    """
+
+    start_total = time.time()
+
+    # Create a temporary folder for processing
+    local_datafolder = os.path.join(local_temp_dir, os.path.basename(datafolder))
+    local_savefolder = os.path.join(local_temp_dir, os.path.basename(savefolder))
+    
+    # Ensure local temp directories exist
+    os.makedirs(local_temp_dir, exist_ok=True)
+    os.makedirs(local_savefolder, exist_ok=True)
+    
+    # Copy data to local drive
+    print(f"Copying {datafolder} to {local_datafolder}...")
+    shutil.copytree(datafolder, local_datafolder, dirs_exist_ok=True)
+    
+    # Update paths to local versions
+    local_scan_io_file = os.path.join(local_datafolder, os.path.basename(scan_io_file))
+    local_scan_dark_file = os.path.join(local_datafolder, os.path.basename(scan_dark_file))
+    
+    # Perform correction on the local copy
+    CorrectDatasetExperimentalGPU(
+        datafolder=local_datafolder,
+        scanprefix=scanprefix,
+        scan_io_file=local_scan_io_file,
+        scan_dark_file=local_scan_dark_file,
+        savefolder=local_savefolder,
+        wedge_poly_file=wedge_poly_file,
+        wedge_IO_file=wedge_IO_file,
+        wedge_dark_file=wedge_dark_file,
+        a=a,
+        b=b,
+        SOD=SOD,
+        SDD=SDD,
+        detector_height=detector_height,
+        detector_width=detector_width,
+        LUT_height=LUT_height,
+        pixelsize=pixelsize,
+        scatter_space_LUT=scatter_space_LUT,
+        scatter_space_projections=scatter_space_projections,
+        height_pitch=height_pitch
+    )
+    
+    # Copy corrected data back to the original save folder
+    print(f"Copying corrected data back to {savefolder}...")
+    shutil.copytree(local_savefolder, savefolder, dirs_exist_ok=True)
+    
+    # Clean up local temporary files
+    print(f"Cleaning up {local_datafolder} and {local_savefolder}...")
+    shutil.rmtree(local_datafolder)
+    shutil.rmtree(local_savefolder)
+    
+    print("Correction completed successfully!")
+    elapsed_total = time.time() - start_total
+    print(f"Total operation time: {elapsed_total / 60:.2f} minutes")
+
+
+
+
+
+
 
 
 #simulated LUT
