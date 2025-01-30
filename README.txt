@@ -10,7 +10,7 @@ Packages that need to be installed to run this code:
 	- numba
 	- matplotlib
 	- scipy
-	- libtiff
+	- pylibtiff
 	- os
 	- re
 	- PIL
