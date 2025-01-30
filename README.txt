@@ -18,6 +18,7 @@ Packages that need to be installed to run this code:
 	- time
 	- math
 	- cudatoolkit
+	- shutil
 
 Files needed for the simulator:
 	- Folder Data
