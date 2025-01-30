@@ -17,6 +17,7 @@ Packages that need to be installed to run this code:
 	- seaborn
 	- time
 	- math
+	- cudatoolkit
 
 Files needed for the simulator:
 	- Folder Data
