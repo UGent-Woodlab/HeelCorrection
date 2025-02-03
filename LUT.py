@@ -449,16 +449,27 @@ def CorrectDatasetExperimentalGPU(datafolder, scanprefix, scan_io_file, scan_dar
 
   numfiles = len(datfiles)
   start = time.time()
-  for i, datfile in enumerate(datfiles): #iterate over all projections that need to be corrected
-    print('Correcting projection {} of {}'.format(i + 1, numfiles), end='\r')
-    proj = FH.im2array(datafolder + '\\' + datfile) #open normalized projection that will be corrected
-    proj = fun.NormaliseExperimental(proj, scan_io, scan_dark) #normalization
-    scattering = CalcScatteringNormalizedProjection(proj, scatter_space_projections) #calculate scattering
-    proj = proj - scattering #scattering correction
-    proj_gpu = cuda.to_device(proj) #copy projection to GPU device memory
-    CorrectNormalizedProjectionGPU[blockspergrid, threadsperblock](wrl_gpu, nwp_gpu, proj_gpu) #correct projection on the GPU
-    corr = proj_gpu.copy_to_host() #copy corrected projection back to RAM
-    FH.array2image2(savefolder + '\\' + datfile, corr) #save corrected projection
+
+  previous_corr = None
+    
+  for i, datfile in enumerate(datfiles):
+        print(f'Correcting projection {i + 1} of {numfiles}', end='\r')
+        try:
+            proj = FH.im2array(os.path.join(datafolder, datfile))
+        except Exception as e:
+            print(f"\033[91mWarning: Failed to open file {datfile}. Using previous corrected file.\033[0m")            
+            if previous_corr is not None:
+                FH.array2image2(os.path.join(savefolder, datfile), previous_corr)
+            continue
+        proj = fun.NormaliseExperimental(proj, scan_io, scan_dark) #normalization
+        scattering = CalcScatteringNormalizedProjection(proj, scatter_space_projections) #calculate scattering
+        proj = proj - scattering #scattering correction
+        proj_gpu = cuda.to_device(proj) #copy projection to GPU device memory
+        CorrectNormalizedProjectionGPU[blockspergrid, threadsperblock](wrl_gpu, nwp_gpu, proj_gpu) #correct projection on the GPU
+        corr = proj_gpu.copy_to_host() #copy corrected projection back to RAM
+        FH.array2image2(savefolder + '\\' + datfile, corr) #save corrected projection
+        previous_corr = corr  # Store the last successfully corrected file
+
   # Add a newline after the loop to avoid overwriting the final output
   print()  
 
