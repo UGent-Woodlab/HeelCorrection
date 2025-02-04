@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <h1 align="center">YoloAnatomy</h1>
+    <h1 align="center">Heel Correction</h1>
 </p>
 
 
@@ -35,7 +35,6 @@
 <p align="center">
 	<img src="https://img.shields.io/badge/Python-3776AB.svg?style=default&logo=Python&logoColor=white" alt="Python">
 	<img src="https://img.shields.io/badge/NumPy-013243.svg?style=default&logo=NumPy&logoColor=white" alt="NumPy">
-	<img src="https://avatars.githubusercontent.com/u/1628082?s=48&v=4" alt="Numba">	
 </p>
 <br>
 
