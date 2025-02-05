@@ -17,13 +17,13 @@
 
 [^aut]: author
 [^cre]: contact person
-[^UG-WL]: UGent-Woodlab
-[^UG-RP]: Ugent Radiation Physics
-[^UG-SSS]: Current affiliation: Ugent Department of Solid State Sciences, CoCooN research group
+[^UG-WL]: UGent-Woodlab, Department of Environment, Ghent University, Coupure Links 653, Gent, 9000, Belgium
+[^UG-RP]: RP-UGCT, Department of Physics and Astronomy – Radiation Physics, Ghent University, Proeftuinstraat 86, Gent, 9000, Belgium
+[^UG-SSS]: Current affiliation: Department of Solid State Sciences - CoCooN research group, Ghent University, Krijgslaan 286, Gent, 9000, Belgium
 
 
 <p align="left">
-   TODO
+   This is the repository for a Python routine that corrects for the heel effect in (helical) X-ray micro-CT scans. It's primary use is increasing the accuracy with which the local mass densities in wood increment cores can be determined. The correction happens on the level of the normalised projection images of the scan. It requires a radiographic projection of a prism-shaped calibration sample that was obtained with the same tube settings and source-to-detector distance as the CT-scan. After correction and reconstruction, one obtains a 3D reconstructed volume that is to a large extent free of consequences from the heel effect and cupping ( which arises as a consequence of beam hardening). The volume consists of voxels that contain a gray-value that is proportional to the local mass density in the sample. By using the Numba library, the routine was optimised to run on an NVIDIA GPU for fast execution.
 </p>
 
 
@@ -44,9 +44,17 @@
 
 #####  Table of Contents
 
-TODO
+- [ Introduction to the method](#introduction)
+- [ Getting Started](#getting-started)
+- [ Performing a heel correction](#performing-a-heel-correction)
+- [ Cite our work](#cite-our-work)
+- [ License](#license)
 
 ---
+
+##  Introduction to the method
+
+TODO
 
 ---
 
@@ -66,6 +74,14 @@ Before running the notebooks, ensure that you have the following dependencies in
 - math
 - cudatoolkit
 - pytest-shutil
+
+TODO
+
+---
+
+## Performing a heel correction
+
+TODO
 
 ---
 
