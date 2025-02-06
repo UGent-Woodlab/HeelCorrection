@@ -95,9 +95,9 @@ The software requires the following parameters, which are explained in the figur
  - SDD: source to detector distance (should be same in scan as in projection of prism in order to have same heel effect)
  - detector_height: height of the detector in pixels as used for the projection images in the data set that is being corrected
  - detector_width: width of the detector in pixels as used for the projection images in the data set that is being corrected
- - LUT_height: eventual height of the LUT that will be used (for example 1010 pixels if projection of wedge only uses top 1000 pixels of detector)
+ - LUT_height: eventual height of the LUT that will be used (for example 1010 pixels if projection of prism only uses top 1000 pixels of detector)
  - pixelsize: size of a pixel in mm
- - scatter_space_LUT: height in pixels available above the wedge to calculate scattering in projection of the prism
+ - scatter_space_LUT: height in pixels available above the prism to calculate scattering in projection of the prism
  - scatter_space_projections: [x1, x2, y1, y2], defines a region in the projection images that is used for calculating the scattering value
 
 ---
