@@ -17,13 +17,13 @@
 
 [^aut]: author
 [^cre]: contact person
-[^UG-WL]: UGent-Woodlab
-[^UG-RP]: Ugent Radiation Physics
-[^UG-SSS]: Current affiliation: Ugent Department of Solid State Sciences, CoCooN research group
+[^UG-WL]: UGent-Woodlab, Department of Environment, Ghent University, Coupure Links 653, Gent, 9000, Belgium
+[^UG-RP]: RP-UGCT, Department of Physics and Astronomy – Radiation Physics, Ghent University, Proeftuinstraat 86, Gent, 9000, Belgium
+[^UG-SSS]: Current affiliation: Department of Solid State Sciences - CoCooN research group, Ghent University, Krijgslaan 286, Gent, 9000, Belgium
 
 
 <p align="left">
-   TODO
+   This is the repository for a Python routine that corrects for the heel effect in (helical) X-ray micro-CT scans. It's primary use is increasing the accuracy with which the local mass densities in wood increment cores can be determined. The correction happens on the level of the normalised projection images of the scan. It requires a radiographic projection of a prism-shaped calibration sample that was obtained with the same tube settings and source-to-detector distance as the CT-scan. After correction and reconstruction, one obtains a 3D reconstructed volume that is to a large extent free of consequences from the heel effect and cupping ( which arises as a consequence of beam hardening). The volume consists of voxels that contain a gray-value that is proportional to the local mass density in the sample. By using the Numba library, the routine was optimised to run on an NVIDIA GPU for fast execution.
 </p>
 
 
@@ -44,9 +44,17 @@
 
 #####  Table of Contents
 
-TODO
+- [ Introduction to the method](#introduction)
+- [ Getting Started](#getting-started)
+- [ Performing a heel correction](#performing-a-heel-correction)
+- [ Cite our work](#cite-our-work)
+- [ License](#license)
 
 ---
+
+##  Introduction to the method
+
+TODO
 
 ---
 
@@ -66,6 +74,31 @@ Before running the notebooks, ensure that you have the following dependencies in
 - math
 - cudatoolkit
 - pytest-shutil
+
+---
+
+## Performing a heel correction
+
+Running a heel correction requires the following: 
+ - All projection images of the CT scan are available
+ - A projection image of a calibration prism is available, recorded with the same tube settings and source-to-detector distance as the CT scan
+ - Dark field and flat field images for both the CT scan and the projection image of the calibration prism are available
+ - The sample has a homogeneous chemical composition to ensure that all mass anttenuation coefficients have the same energy dependency
+ - The calibration prism is made of an equivalent material as the sample under study
+
+Furthermore, the software assumes the calibration prism is placed on top of the optical axis of the CT scanner with the vertical flat side facing the source and the source-to-object distance optimised such that the projection of the prism is wider than the detector in order to avoid edge effects. 
+
+The software requires the following parameters, which are explained in the figures below:
+ - a: maximal thickness of the prism (thickness at the bottom) (in mm)
+ - b: height of the prism (in mm)
+ - SOD: source to objecte distance (distance from source to flat vertical plane of prism, prism is placed in scanner such that vertical plane faces the source)
+ - SDD: source to detector distance (should be same in scan as in projection of prism in order to have same heel effect)
+ - detector_height: height of the detector in pixels as used for the projection images in the data set that is being corrected
+ - detector_width: width of the detector in pixels as used for the projection images in the data set that is being corrected
+ - LUT_height: eventual height of the LUT that will be used (for example 1010 pixels if projection of prism only uses top 1000 pixels of detector)
+ - pixelsize: size of a pixel in mm
+ - scatter_space_LUT: height in pixels available above the prism to calculate scattering in projection of the prism
+ - scatter_space_projections: [x1, x2, y1, y2], defines a region in the projection images that is used for calculating the scattering value
 
 ---
 
