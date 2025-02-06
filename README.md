@@ -100,6 +100,13 @@ The software requires the following parameters, which are explained in the figur
  - scatter_space_LUT: height in pixels available above the prism to calculate scattering in projection of the prism
  - scatter_space_projections: [x1, x2, y1, y2], defines a region in the projection images that is used for calculating the scattering value
 
+<p align="center">
+  <img src="./geometry.PNG" width="60%" alt="geometry">
+</p>
+<p align="center">
+  <img src="./detectors.PNG" width="80%" alt="detectors">
+</p>
+
 ---
 
 ## Cite our work
