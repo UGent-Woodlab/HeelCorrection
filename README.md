@@ -91,8 +91,8 @@ Furthermore, the software assumes the calibration prism is placed on top of the 
 The software requires the following parameters, which are explained in the figures below:
  - a: maximal thickness of the prism (thickness at the bottom) (in mm)
  - b: height of the prism (in mm)
- - SOD: source to objecte distance (distance from source to flat vertical plane of prism, prism is placed in scanner such that vertical plane faces the source)
- - SDD: source to detector distance (should be same in scan as in projection of prism in order to have same heel effect)
+ - SOD: source-to-objecte distance (distance from source to flat vertical plane of prism, prism is placed in scanner such that vertical plane faces the source)
+ - SDD: source-to-detector distance (should be same in scan as in projection of prism in order to have same heel effect)
  - detector_height: height of the detector in pixels as used for the projection images in the data set that is being corrected
  - detector_width: width of the detector in pixels as used for the projection images in the data set that is being corrected
  - LUT_height: eventual height of the LUT that will be used (for example 1010 pixels if projection of prism only uses top 1000 pixels of detector)
