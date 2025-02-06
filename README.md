@@ -75,13 +75,30 @@ Before running the notebooks, ensure that you have the following dependencies in
 - cudatoolkit
 - pytest-shutil
 
-TODO
-
 ---
 
 ## Performing a heel correction
 
-TODO
+Running a heel correction requires the following: 
+ - All projection images of the CT scan are available
+ - A projection image of a calibration prism is available, recorded with the same tube settings and source-to-detector distance as the CT scan
+ - Dark field and flat field images for both the CT scan and the projection image of the calibration prism are available
+ - The sample has a homogeneous chemical composition to ensure that all mass anttenuation coefficients have the same energy dependency
+ - The calibration prism is made of an equivalent material as the sample under study
+
+Furthermore, the software assumes the calibration prism is placed on top of the optical axis of the CT scanner with the vertical flat side facing the source and the source-to-object distance optimised such that the projection of the prism is wider than the detector in order to avoid edge effects. 
+
+The software requires the following parameters, which are explained in the figures below:
+ - a: maximal thickness of the wedge (thickness at the bottom) (in mm)
+ - b: height of the wedge (in mm)
+ - SOD: source to objecte distance (distance from source to flat vertical plane of wedge, wedge is placed in scanner such that vertical plane faces the source)
+ - SDD: source to detector distance (should be same in scan as in projection of wedge in order to have same heel effect!!!)
+ - detector_height: height of the detector in pixels as used for the projection images in the data set that is being corrected
+ - detector_width: width of the detector in pixels as used for the projection images in the data set that is being corrected
+ - LUT_height: eventual height of the LUT that will be used (for example 1010 pixels if projection of wedge only uses top 1000 pixels of detector)
+ - pixelsize: size of a pixel in mm
+ - scatter_space_LUT: height in pixels available above the wedge to calculate scattering in projection of the wedge
+ - scatter_space_projections: [x_1, x_2, y_1, y_2], defines a region in the projection images that is used for calculating the scattering value
 
 ---
 
