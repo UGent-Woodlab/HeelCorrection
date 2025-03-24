@@ -324,8 +324,8 @@ def CorrectNormalizedDatasetExperimental(datafolder, scanprefix, savefolder, wed
   #prepare experimental LUT:
   wrl, nwp = CreateLUTExperimental(wedge_poly, wedge_io, wedge_dark, a, b, SOD, SDD, detector_height, detector_width, LUT_height, pixelsize, scatter_space_LUT, height_pitch)
 
-  #make list of files that need to be corrected
-  datfiles = [f for f in os.listdir(datafolder) if re.match(scanprefix + r'*', f)]
+  #make list of files that need to be corrected, tifs with correct prefix
+  datfiles = [f for f in os.listdir(datafolder) if re.match(scanprefix + r'.*\.tif$', f)]
 
   numfiles = len(datfiles)
   for i, datfile in enumerate(datfiles): #iterate over all files
@@ -369,8 +369,8 @@ def CorrectNormalizedDatasetExperimentalGPU(datafolder, scanprefix, savefolder, 
   wrl_gpu = cuda.to_device(wrl)
   nwp_gpu = cuda.to_device(nwp)
 
-  # make list of files that need to be corrected
-  datfiles = [f for f in os.listdir(datafolder) if re.match(scanprefix + r'*', f)]
+  #make list of files that need to be corrected, tifs with correct prefix
+  datfiles = [f for f in os.listdir(datafolder) if re.match(scanprefix + r'.*\.tif$', f)]
 
   #shape of the projection images, used by gpu to launch parallel threads
   shape0 = np.shape(FH.im2array(datafolder + '\\' + datfiles[0]))[0]
@@ -430,8 +430,8 @@ def CorrectDatasetExperimentalGPU(datafolder, scanprefix, scan_io_file, scan_dar
   wrl_gpu = cuda.to_device(wrl)
   nwp_gpu = cuda.to_device(nwp)
 
-  # make list of files that need to be corrected
-  datfiles = [f for f in os.listdir(datafolder) if re.match(scanprefix + r'*', f)]
+  #make list of files that need to be corrected, tifs with correct prefix
+  datfiles = [f for f in os.listdir(datafolder) if re.match(scanprefix + r'.*\.tif$', f)]
     
   # load scan IO and DI
   scan_io = FH.im2array(scan_io_file) #open flat field
