@@ -7,7 +7,7 @@
 </p>
 
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14637854.svg)](https://doi.org/10.5281/zenodo.14637854)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15836128.svg)](https://doi.org/10.5281/zenodo.15836128)
 
 [De Bolle, Jorden![ORCID logo](https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png)](https://orcid.org/0000-0002-5179-1725)[^aut][^UG-RP][^UG-SSS];
 [Verschuren, Louis![ORCID logo](https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png)](https://orcid.org/0000-0002-3102-4588)[^aut][^cre][^UG-WL];
@@ -125,8 +125,18 @@ keywords = {μCT, Heel effect, Densitometry, X-ray}
 ```
 
 
-When using any of the software, also cite the proper Zenodo DOI [here](TODO)
+When using any of the software, also cite the proper Zenodo DOI [here](https://doi.org/10.5281/zenodo.15836128)
 
+```tex
+@software{zenodoHeelCorr,
+  author = {Jorden {De Bolle} and Louis Verschuren and Jan {Van den Bulcke} and Matthieu N. Boone},
+  title        = {UGent-Woodlab/HeelCorrection},
+  month        = jul,
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.15836129}
+}
+```
 ---
 
 ##  License
