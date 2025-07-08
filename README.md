@@ -54,7 +54,7 @@
 
 ##  Introduction to the method
 
-TODO
+In most conventional X-ray tubes, the anode target is tilted with respect to the optical axis of the measurement system. However, the tilt causes a spatial variation of the X-ray spectrum throughout the generated X-ray beam, a spatio-spectral effect called the (anode) heel effect. Since the sample in a micro computed tomography (µCT) scan experiences an asymmetry in the X-ray beam spectrum due to the heel effect, the projection images will contain an asymmetry as well. This influences the resulting reconstructions from the µCT scan. As a consequence, the heel effect hinders an accurate determination of local material densities with µCT, particularly when using a helical trajectory. In this paper, a method will be demonstrated that is capable of correcting for the heel effect in helical µCT scans where the heel effect is oriented perpendicular to the rotation axis. This increases the accuracy of the obtained local mass densities. In addition, the method removes beam hardening effects. The method is based on a lookup table (LUT) that is used to correct pixel values in the normalised projection images of the CT scan in order to eliminate the asymmetry introduced by the heel effect. We demonstrate this correction algorithm on a helical CT scan of wood increment cores, which sufficiently satisfies the method’s requirement of a homogeneous chemical composition. Nonetheless, the method can be used in a wide variety of applications.
 
 ---
 
@@ -111,10 +111,18 @@ The software requires the following parameters, which are explained in the figur
 
 ## Cite our work
 
-You can find the paper where the entire pipeline is described [here](TODO), or cite our work with the following bibtex snippet:
+You can find the paper where the entire pipeline is described [here](https://doi.org/10.1016/j.precisioneng.2025.06.019), or cite our work with the following bibtex snippet:
 
 ```tex
-TODO
+@article{DEBOLLE2025,
+title = {Correction for the heel effect in helical μCT scans for accurate densitometry},
+journal = {Precision Engineering},
+year = {2025},
+issn = {0141-6359},
+doi = {https://doi.org/10.1016/j.precisioneng.2025.06.019},
+author = {Jorden {De Bolle} and Louis Verschuren and Jan {Van den Bulcke} and Matthieu N. Boone},
+keywords = {μCT, Heel effect, Densitometry, X-ray}
+}
 ```
 
 
