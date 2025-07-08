@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./Fig.JPG" width="100%" alt="logo">
+  <img src="./graphical_abstract.PNG" width="100%" alt="logo">
 </p>
 
 <p align="center">
@@ -7,8 +7,7 @@
 </p>
 
 
-
-[![DOI]()]()
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14637854.svg)](https://doi.org/10.5281/zenodo.14637854)
 
 [De Bolle, Jorden![ORCID logo](https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png)](https://orcid.org/0000-0002-5179-1725)[^aut][^UG-RP][^UG-SSS];
 [Verschuren, Louis![ORCID logo](https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png)](https://orcid.org/0000-0002-3102-4588)[^aut][^cre][^UG-WL];
