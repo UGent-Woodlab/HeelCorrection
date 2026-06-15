@@ -74,6 +74,8 @@ Before running the notebooks, ensure that you have the following dependencies in
 - cudatoolkit
 - pytest-shutil
 
+You can use the environment.yml file to set up your conda environment. 
+
 ---
 
 ## Performing a heel correction
